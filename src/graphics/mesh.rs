@@ -639,6 +639,7 @@ impl Drawable for Mesh {
             .get_or_insert(self.image.sampler_info, gfx.factory.as_mut());
 
         let typed_thingy = gfx.backend_spec.raw_to_typed_shader_resource(texture);
+        gfx.data.aux = (typed_thingy.clone(), sampler.clone());
         gfx.data.tex = (typed_thingy, sampler);
 
         gfx.draw(Some(&self.slice))?;

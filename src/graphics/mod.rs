@@ -367,6 +367,7 @@ gfx_defines! {
     pipeline pipe {
         vbuf: gfx::VertexBuffer<Vertex> = (),
         tex: gfx::TextureSampler<[f32; 4]> = "t_Texture",
+        aux: gfx::TextureSampler<[f32; 4]> = "t_Aux",
         globals: gfx::ConstantBuffer<Globals> = "Globals",
         rect_instance_properties: gfx::InstanceBuffer<InstanceProperties> = (),
         // The default values here are overwritten by the

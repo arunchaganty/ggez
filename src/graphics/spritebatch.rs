@@ -166,6 +166,7 @@ impl graphics::Drawable for SpriteBatch {
         let typed_thingy = gfx
             .backend_spec
             .raw_to_typed_shader_resource(self.image.texture.clone());
+        gfx.data.aux = (typed_thingy.clone(), sampler.clone());
         gfx.data.tex = (typed_thingy, sampler);
 
         let mut slice = gfx.quad_slice.clone();

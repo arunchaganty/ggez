@@ -346,7 +346,10 @@ impl Drawable for Image {
         let typed_thingy = gfx
             .backend_spec
             .raw_to_typed_shader_resource(self.texture.clone());
+        gfx.data.aux = (typed_thingy.clone(), sampler.clone());
         gfx.data.tex = (typed_thingy, sampler);
+
+
         let previous_mode: Option<BlendMode> = if let Some(mode) = self.blend_mode {
             let current_mode = gfx.blend_mode();
             if current_mode != mode {

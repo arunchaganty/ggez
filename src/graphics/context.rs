@@ -226,9 +226,13 @@ impl GraphicsContextGeneric<GlBackendSpec> {
         let texture = white_image.texture.clone();
         let typed_thingy = backend.raw_to_typed_shader_resource(texture);
 
+        let typed_thingy_copy = backend.raw_to_typed_shader_resource(white_image.texture.clone());
+        let sampler_copy = samplers.get_or_insert(sampler_info, &mut factory);
+
         let data = pipe::Data {
             vbuf: quad_vertex_buffer.clone(),
             tex: (typed_thingy, sampler),
+            aux: (typed_thingy_copy, sampler_copy),
             rect_instance_properties: rect_inst_props,
             globals: globals_buffer,
             out: screen_render_target.clone(),
